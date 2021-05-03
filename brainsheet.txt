@@ -1,0 +1,38 @@
+users: {
+    email
+    password
+    staff-boolean
+    adoption_requests: []
+    adopted: [] 
+}
+
+adoption_requests: {
+    user
+    animal 
+    status
+    created_at
+}
+
+animals: {
+    name
+    type
+    date_of_birth
+    description
+    pictures[]
+    availability 
+    adoped_by 
+}
+
+
+Users can...
+register account
+view adoption dashboard
+make adoption adoption_requests 
+view all previous requests. 
+
+
+Staff can... 
+View all adoption requests (past and present)
+Approve or deny them 
+Add new animals to system 
+See list of all animals showing who owns each of them, if adopted. 

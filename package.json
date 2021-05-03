@@ -1,0 +1,28 @@
+{
+  "name": "aston-animal-sanctuary",
+  "version": "1.0.0",
+  "description": "A website for the Aston Animal Sanctuary built in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server/index",
+    "build": "next build",
+    "start": "node server/index"
+  },
+  "author": "Kishan Lala",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "next": "10.2.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "validator": "^13.6.0"
+  }
+}

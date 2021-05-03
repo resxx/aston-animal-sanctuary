@@ -1,0 +1,16 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+.part {
+    border: 1px solid black;
+    padding: 2px 4px;
+}
+
+.image {
+    width: 128px;
+    height: 128px;
+}
