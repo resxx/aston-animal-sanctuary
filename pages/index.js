@@ -8,7 +8,7 @@ const Auth = ({ setToken, setStaff }) => {
   const [error, setError] = React.useState(() => ''); 
 
   const login = async () => {
-    let response = await axios.post('/user/login', { email: email.current.value, password: password.current.value }); 
+    let response = await axios.post('https://aston-animal-sanctuary.vercel.app/user/login', { email: email.current.value, password: password.current.value }); 
     let { success, token, staff, code } = response.data; 
     if(success) {
       setStaff(staff) 
@@ -19,7 +19,7 @@ const Auth = ({ setToken, setStaff }) => {
   }
 
   const register = async () => {
-    let response = await axios.post('/user/register', { email: email.current.value, password: password.current.value }); 
+    let response = await axios.post('https://aston-animal-sanctuary.vercel.app/user/register', { email: email.current.value, password: password.current.value }); 
     let { success, token, staff, code } = response.data; 
     console.log(response);
     if(success) {
@@ -59,7 +59,7 @@ const Dashboard = ({ staff, token }) => {
   const _picture = React.useRef(); 
 
   const doEverything = async () => {
-    let _adoptions = await axios.get('/adoptions', {
+    let _adoptions = await axios.get('https://aston-animal-sanctuary.vercel.app/adoptions', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -70,7 +70,7 @@ const Dashboard = ({ staff, token }) => {
       setAdopted(_adoptions.data.data.filter(r => r.adopted_by != null)); 
     }
 
-    let _requests = await axios.get('/requests', {
+    let _requests = await axios.get('https://aston-animal-sanctuary.vercel.app/requests', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -78,7 +78,7 @@ const Dashboard = ({ staff, token }) => {
 
     setRequests(_requests.data.data)
     if(staff) { 
-      let _pending =  await axios.get('/requests/pending', {
+      let _pending =  await axios.get('https://aston-animal-sanctuary.vercel.app/requests/pending', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ const Dashboard = ({ staff, token }) => {
       var pic = _picture.current.value 
       if(pic.indexOf("http") == -1) return alert('use proper link for image'); 
 
-    let _response = await axios.post('/animals', { name, type, dateOfBirth: dob, description: desc, pictures: [pic]}, {
+    let _response = await axios.post('https://aston-animal-sanctuary.vercel.app/animals', { name, type, dateOfBirth: dob, description: desc, pictures: [pic]}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -157,7 +157,7 @@ const Dashboard = ({ staff, token }) => {
 
 const ToAdopt = ({ animal, token, doEverything }) => {
   const adopt = async () => {
-    let response = await axios.post(`/animals/${animal._id}/adopt`, {}, {
+    let response = await axios.post(`https://aston-animal-sanctuary.vercel.app/animals/${animal._id}/adopt`, {}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -197,7 +197,7 @@ const Adopted = ({ animal }) => (
 
 const PendingAdoption = ({ pending, token, doEverything }) => {
   const approve = async () => {
-    let response = await axios.post(`/adoptions/${pending._id}/approve`, {}, {
+    let response = await axios.post(`https://aston-animal-sanctuary.vercel.app/adoptions/${pending._id}/approve`, {}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -208,7 +208,7 @@ const PendingAdoption = ({ pending, token, doEverything }) => {
   }
 
   const reject = async () => {
-    let response = await axios.post(`/adoptions/${pending._id}/reject`, {}, {
+    let response = await axios.post(`https://aston-animal-sanctuary.vercel.app/adoptions/${pending._id}/reject`, {}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
